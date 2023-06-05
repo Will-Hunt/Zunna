@@ -1,0 +1,49 @@
+<!-- Zunna Browser Extension -->
+<!-- Options Page HTML Design -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Contains Pop Up MetaData -->
+  <title>Zunna Options</title>
+
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" content="#c6838f" />
+
+  <link rel="stylesheet" type="text/css" href="../css/main.css">
+  <link rel="stylesheet" type="text/css" href="../css/optionsPage.css">
+</head>
+
+<body class="zunnaBody">
+  <!-- Contains the Pop Ups Display Content -->
+  <div>
+    <h1 id="zunnaH1">Digitial Profile is Protected</h1>
+  </div>
+  <h2 classs="zunnaH2" id="zunnaDescription"></h2>
+  <hr>
+  <button class="zunnaButton" id="resetConfig">Reset User Settings</button>
+  <div>
+    <hr>
+    <h3>The following are the user settings for the password suggestion</h3>
+    <div class="zunnaUptUID">
+      <input type="password" class="zunnaUptUIDInput" placeholder="Meaning Phrase" id="meaningfulPhrase" required
+        minlength="7" maxlength="15">
+      <input type="password" class="zunnaUptUIDInput" placeholder="Meaningful Number" id="meaningfulNumber" required
+        minlength="1" maxlength="5">
+      <input type="password" class="zunnaUptUIDInput" placeholder="Meaningful Character" id="meaningfulSpecialChr"
+        required minlength="1" maxlength="5">
+      <br><br><br>
+      <button type="submit" class="zunnaButton" id="updateUserDetails">Update</button>
+      <br>
+    </div>
+  </div>
+  <hr>
+  <div class="footer">
+    <h2 classs="zunnaH2">Zunna - Protecting Personal Data</h2>
+  </div>
+  <script src="../js/options.js" defer></script>
+</body>
+
+</html>

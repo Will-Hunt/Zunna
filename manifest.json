@@ -1,0 +1,59 @@
+{
+  "name": "Zunna",
+  "author": {
+    "name": "Will H",
+    "email": "wh.will.hunt@gmail.com"
+  },
+  "version": "1.0",
+  "description": "A browser extension protecting personal data against common cyber security risks.",
+  "manifest_version": 2,
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "webRequest",
+    "webRequestBlocking",
+    "storage",
+    "unlimitedstorage",
+    "cookies",
+    "<all_urls>"
+  ],
+  "options_page": "html/options.html",
+  "options_ui": {
+    "page": "html/options.html",
+    "open_in_tab": true
+  },
+  "browser_action": {
+    "default_title": "Zunna",
+    "default_popup": "html/popup.html",
+    "default_icon": {
+      "16": "images/greenIcon16Pixels.png",
+      "32": "images/greenIcon32Pixels.png",
+      "48": "images/greenIcon48Pixels.png"
+    }
+  },
+  "background": {
+    "scripts": [
+      "js/background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "js/contentScript.js"
+      ],
+      "css": [
+        "css/main.css"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "icons": {
+    "16": "images/greenIcon16Pixels.png",
+    "32": "images/greenIcon32Pixels.png",
+    "48": "images/greenIcon48Pixels.png"
+  }
+}

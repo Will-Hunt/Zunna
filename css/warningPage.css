@@ -1,0 +1,18 @@
+/* Zuna Browser Extenson */
+/* Styling for the PopUp Page  */
+
+/* Body */
+zunnaBody{
+  margin: auto;
+  width: 50%;
+}
+/* Content */
+zunnaButton{width: 100%;}
+#returnToPreviousPage{
+  background-color: lightskyblue;
+  padding: 15px;
+}
+#continueToPage{
+  background-color: red;
+  opacity: 0.6;
+}

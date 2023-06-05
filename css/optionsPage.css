@@ -1,0 +1,22 @@
+/* Zuna Browser Extenson */
+/* Styling for the Options Page  */
+
+/* Body */
+.zunnaBody{
+  margin: auto;
+  width: 80%;
+}
+/* Header */
+
+/* Content */
+.zunnaDescription{font-family: Souvenir;}
+.zunnaUptUID{width: 100%;}
+.zunnaUptUIDInput{width: 32%; 
+  float:left; 
+  padding-top: 10px; 
+  padding-bottom: 10px;
+}
+.zunnaButton{width: 49.8%;}
+.zunnaUptUIDButton{width: 25%; float:right;}
+#updateUserDetails{width: 30%;}
+/* Footer */

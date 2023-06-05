@@ -1,0 +1,42 @@
+<!-- Zunna Browser Extension -->
+<!-- Pop up HTML Design -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Contains Pop Up MetaData -->
+  <title>Zunna</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" type="text/css" href="../css/main.css">
+  <link rel="stylesheet" type="text/css" href="../css/popupPage.css">
+</head>
+
+<body class="zunnaBody">
+  <!-- Contains the Pop Ups Display Content -->
+  <div>
+    <h1 id="zunnaH1">Digitial Profile is Protected</h1>
+    <a href="options.html" target="_blank"><button id="zunnaOptionsButton" class="zunnaButton">Options</button></a>
+    <a href="https://www.huntw.co.uk/zunna" target="_blank"><button class="zunnaButton">About</button></a>
+    <hr>
+  </div>
+  <div id="featuresToList"></div>
+  <hr>
+  <h3>Advertisements Blocked: <span id="advertsCounter"></span></h3>
+  <hr>
+  <div id="pwdSug">
+    <div id="zunnaPwdButton">
+      <button class="zunnaButton" id="zunnaCopyPwdButton">Copy Password</button>
+      <button class="zunnaButton" id="zunnaShowPwdButton">Show Password</button>
+    </div>
+    <hr>
+  </div>
+  <div id="cookieProt">
+    <h3>Total Cookies Found: <span id="cookiesCounter"></span></h3>
+    <button class="zunnaButton" id="deleteAllCookies">Delete All Cookies</button>
+    <button class="zunnaButton" id="deleteSiteCookies">Delete Site Cookies</button>
+    <hr>
+  </div>
+  <script src="../js/popup.js" defer></script>
+</body>
+
+</html>

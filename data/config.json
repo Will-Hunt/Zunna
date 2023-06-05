@@ -1,0 +1,75 @@
+{
+  "extensionDescription": "A cross-browser extension that encompasses the necessary features to best protect individuals against common cyber security risks whilst surfing the web.",
+  "urlsBlocked": 0,
+  "cookiesCount": 0,
+  "featureList": [
+    {
+      "id": "clickProt",
+      "name": "Clickjacking Protection",
+      "featureOn": true,
+      "description": "The extension can detect and highlight hidden inline frame features in a URL and Web Page."
+    },
+    {
+      "id": "cookieProt",
+      "name": "Cookie File Protection",
+      "featureOn": true,
+      "description": "The extension can manage and delete appropriate cookie files in a URL and Web Page."
+    },
+    {
+      "id": "xXSProt",
+      "name": "Cross-Site Scripting",
+      "featureOn": true,
+      "description": "The extension can recognize and remove Cross-Site Scripting tags in a URL and Web Page."
+    },
+    {
+      "id": "pwdSug",
+      "name": "Password Suggestion",
+      "featureOn": true,
+      "description": "Users receive a prompt for a more secure and memorable password when visiting sign up pages"
+    },
+    {
+      "id": "safeWebChec",
+      "name": "Safe Website Checking",
+      "featureOn": true,
+      "description": "The extension can recognize when a site is safe or not using the HTTP protocol and comparing URLs to datasets of websites known to be dangerous, cautioning the user appropriately."
+    },
+    {
+      "id": "trackProt",
+      "name": "Tracking Protection",
+      "featureOn": true,
+      "description": "The extension can recognize and remove tracking components in a URL and Web Page."
+    },
+    {
+      "id": "urlBlock",
+      "name": "Advertisement Blocking",
+      "featureOn": true,
+      "description": "The extension can recognize and remove advertisement elements on a web page."
+    }
+  ],
+  "parametersToRemove": [
+    "utm_medium",
+    "utm_source",
+    "utm_campaign",
+    "utm_term",
+    "utm_content",
+    "Keyword",
+    "MatchType",
+    "QueryString",
+    "OrderItemID",
+    "AdID",
+    "Param1",
+    "Param2",
+    "Param3",
+    "ifsearch",
+    "ifcontent"
+  ],
+  "trackerMap": [],
+  "trackersThreshold": 2,
+  "urlsToAllow": [],
+  "userBlockList": [],
+  "userDetailsArray": [
+    "Default",
+    "1",
+    "!"
+  ]
+}

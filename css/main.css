@@ -1,0 +1,69 @@
+/* Zuna Browser Extenson */
+/* Main Styling for all HTML pages */
+/* Body */
+.zunnaBody {
+  font-family: 'Courier New', monospace, 1em;
+  box-sizing: border-box;
+  padding: 10px;
+  padding-top: 0px;
+  color: #FFFFFF;
+  background-color: #659DBD;
+  width: 250px;  
+}
+/* Header */
+#zunnaH1{
+  flex-direction: row;
+  color:red;
+  background-color: #f1f1f1;
+  padding: 7px;
+  text-align: center;
+}
+
+/* Content */
+.zunnaH2{
+  text-align: center;
+  font-size: 2em;
+}
+.zunnaContent {
+  padding: 10px;
+}
+.zunnaFeatureCheckbox{
+  float: right;
+  cursor: pointer;
+  background-color: red;
+  height: 25px;
+  width: 25px
+}
+.zunnaFeatureCheckbox:checked{
+  background-color: #2196F3;
+}
+.zunnaFeaturesToList {
+  padding: 100px;
+}
+.zunnaH3{
+  font-size: 1.5em;
+}
+
+.zunnaP{
+  font-family: Souvenir;
+  font-size: 1.5em;
+  text-align: center;
+}
+.zunnaButton{
+  border: white 2px;
+  padding: 6px;
+  width: 47%;
+  text-align: center;
+  cursor: pointer;
+}
+.zunnaButton:hover {
+  background-color: #DAAD86;
+}
+.hidden {
+  display: none;
+}
+
+/* Footer */
+.zunnaFooter {
+  padding: 10px;
+}
