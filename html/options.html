@@ -20,11 +20,20 @@
   <!-- Contains the Pop Ups Display Content -->
   <div>
     <h1 id="zunnaH1">Digitial Profile is Protected</h1>
+  </div>  
+  <div class="zunnaTab">
+    <button class="zunnaTabLinks" id="AboutButton">About Zunna</button>
+    <button class="zunnaTabLinks" id="SettingsButton">Settings</button>
+    <button class="zunnaTabLinks" id="ReportButton">Report an Issue</button>
   </div>
-  <h2 classs="zunnaH2" id="zunnaDescription"></h2>
-  <hr>
-  <button class="zunnaButton" id="resetConfig">Reset User Settings</button>
-  <div>
+  
+  <div id="About" class="zunnaTabcontent">
+    <h2 classs="zunnaH2" id="zunnaDescription"></h2>
+    <p class="zunnaP" id="zunnaFeatureList"></p>
+  </div>
+  
+  <div id="Settings" class="zunnaTabcontent" style="display:none">
+    <button class="zunnaButton" id="resetConfig">Reset User Settings</button>
     <hr>
     <h3>The following are the user settings for the password suggestion</h3>
     <div class="zunnaUptUID">
@@ -39,7 +48,14 @@
       <br>
     </div>
   </div>
-  <hr>
+  
+  <div id="Report" class="zunnaTabcontent" style="display:none">
+    <h3>WIP</h3>
+    <p>Currently a work in progress feature.</p>
+  </div> 
+
+  
+  
   <div class="footer">
     <h2 classs="zunnaH2">Zunna - Protecting Personal Data</h2>
   </div>

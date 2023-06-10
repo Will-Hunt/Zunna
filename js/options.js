@@ -24,6 +24,38 @@ var optionsPage = {
   },
   /******** Creates Description Elements End **********/
 
+  /******** 4. Creates Feature List Elements **********/
+  parseFeatureList: function () {
+    try {
+      for (var feature of JSON.parse(localStorage.zunnaConfig).featureList) {
+        var divElem = document.createElement('div');
+        if (feature.featureOn) {
+          featureBlock = '<input type="checkbox" class="zunnaFeatureCheckbox" checked id="' + feature.id + '">';
+          if (document.getElementById(feature.id)) {
+            document.getElementById(feature.id).style.visibility = "visible";
+          }
+        }
+        else {
+          featureBlock = '<input type="checkbox" class="zunnaFeatureCheckbox" id="' + feature.id + '">';
+          if (document.getElementById(feature.id)) document.getElementById(feature.id).style.visibility = "hidden";
+        }
+        featureBlock += '<h3 class="zunnaH3">' + feature.name + '</h3>';
+        divElem.innerHTML = featureBlock;
+      
+        divElem.innerHTML = JSON.parse(localStorage.zunnaConfig).featureList;
+
+
+
+
+        document.getElementById('zunnaFeatureList').appendChild(divElem)
+      }
+    } catch (e) {
+      console.error("Options Page: FeatureList couldn't be parsed \n", e)
+      return { redirectUrl: window.browser.extension.getURL("../html/resetConfig.html")};
+    }
+  },
+  /******** Creates Description Elements End **********/
+
   /******** Updates User Settings Toggles **********/
   updateUserSettings: function () {
     try {
@@ -42,8 +74,26 @@ var optionsPage = {
   optionsPageMain: function () {
     // Call each function to display aspect of optionsPage
     optionsPage.parseDescription()
+    optionsPage.parseFeatureList()
   }
 }
+
+/******** Creates Tabs Elements **********/
+document.getElementById("AboutButton").addEventListener("click",function(){
+  document.getElementById("About").style.display = "block";
+  document.getElementById("Settings").style.display = "none";
+  document.getElementById("Report").style.display = "none";
+})
+document.getElementById("SettingsButton").addEventListener("click",function(){
+  document.getElementById("About").style.display = "none";
+  document.getElementById("Settings").style.display = "block";
+  document.getElementById("Report").style.display = "none";
+})
+document.getElementById("ReportButton").addEventListener("click",function(){
+  document.getElementById("About").style.display = "none";
+  document.getElementById("Settings").style.display = "none";
+  document.getElementById("Report").style.display = "block";
+})
 
 /******** Listens for user to Click Reset Configuration File **********/
 document.getElementById("resetConfig").addEventListener("click", function () {
