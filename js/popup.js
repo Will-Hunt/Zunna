@@ -10,62 +10,6 @@ window.browser = (function () {
 })();
 
 var popUp = {
-  /******** 3. Updates Title **********/
-  updateTitle: function () {
-    try {
-      //Firstly set the Title to be Off 
-      document.getElementById("zunnaH1").style.color = "Red"
-      for (var feature of JSON.parse(localStorage.zunnaConfig).featureList) {
-        // If any of the features are on then show the extension is turned on
-        if (feature.featureOn) document.getElementById("zunnaH1").style.color = "ForestGreen"
-      }
-    } catch (e) {
-      console.error("Pop up: Title couldn't be updated \n", e)
-      return { redirectUrl: window.browser.extension.getURL("../html/resetConfig.html") };
-    }
-  },
-  /******** Updates Title End **********/
-
-  /******** 4. Creates Feature Elements **********/
-  parseFeatures: function () {
-    try {
-      //For each feature in feature list create a element to display in PopUp
-      // By using a loop through the config reduces the need to hardcode each feature
-      // Changes can be made once from Config
-      for (var feature of JSON.parse(localStorage.zunnaConfig).featureList) {
-        var divElem = document.createElement('div');
-        if (feature.featureOn) {
-          featureBlock = '<input type="checkbox" class="zunnaFeatureCheckbox" checked id="' + feature.id + '">';
-          if (document.getElementById(feature.id)) {
-            document.getElementById(feature.id).style.visibility = "visible";
-          }
-        }
-        else {
-          featureBlock = '<input type="checkbox" class="zunnaFeatureCheckbox" id="' + feature.id + '">';
-          if (document.getElementById(feature.id)) document.getElementById(feature.id).style.visibility = "hidden";
-        }
-        featureBlock += '<h3 class="zunnaH3">' + feature.name + '</h3>';
-        divElem.innerHTML = featureBlock;
-        document.getElementById('featuresToList').appendChild(divElem)
-      }
-    } catch (e) {
-      console.error("Pop up:Features couldn't be parsed \n", e)
-      return { redirectUrl: window.browser.extension.getURL("../html/resetConfig.html") };
-    }
-  },
-  /******** Creates Feature Elements End **********/
-
-  /******** 5. Display Password Options Start **********/
-  displayPwd: function () {
-    // If the user has checked the Password Suggestion protection feature on, then call the function
-    if (JSON.parse(localStorage.zunnaConfig).featureList.find(({ id }) => id == "pwdSug").featureOn) {
-      document.getElementById("zunnaPwdButton").style.display = 'block';
-    } else {
-      document.getElementById("zunnaPwdButton").style.display = 'none';
-    }
-  },
-  /******** Display Password Options End **********/
-
   /******** 6. Gets Cookies Count **********/
   cookiesCounter: function () {
     try {
@@ -90,36 +34,9 @@ var popUp = {
   },
   /******** Gets Tracker Count End **********/
 
-  /******** Updates Feature List Toggles **********/
-  updateFeatureList: function () {
-    try {
-      config = JSON.parse(localStorage.zunnaConfig)
-      //For Each Feature Toggle, set featureOn to True or False
-      for (var feature of config.featureList) {
-        feature.featureOn = document.getElementById(feature.id).checked;
-        if (document.getElementById(feature.id)) {
-          document.getElementById(feature.id).style.visibility = "visible";
-        }
-        else document.getElementById(feature.id).style.visibility = "hidden";
-      }
-      localStorage.setItem("zunnaConfig", JSON.stringify(config))
-      //Update Title as the Toggles have changed
-      popUp.updateTitle()
-      popUp.displayPwd()
-    } catch (e) {
-      console.error("Options Page: Feature List couldn't be updated \n", e)
-      return { redirectUrl: window.browser.extension.getURL("../html/resetConfig.html") };
-    }
-    //Issue Overcome: maintaining config persistence
-  },
-  /******** Updates Feature List Toggles End **********/
-
   /******** 2. Loads PopUp with Config contents **********/
   popUpMain: function () {
     // Call each function to display aspect of PopUp
-    popUp.updateTitle()
-    popUp.parseFeatures()
-    popUp.displayPwd()
     popUp.cookiesCounter()
     popUp.advertsCounter()
   }

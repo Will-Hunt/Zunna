@@ -23,7 +23,7 @@ var contentScript = {
       //iFrames can be hidden on a different z-index, all elements should be shown in the same location
       if (top != window) top.location = window.location
       //Method 2: Same Site iFrame only
-      // else contentScript.sameSiteIFrame()
+
     } catch (e) {
       //Method 3: Showing frames
       contentScript.highlightFrames()
@@ -50,26 +50,12 @@ var contentScript = {
   },
   /******** Clickjacking Protection End **********/
 
-  /******** 2.Checks Page **********/
-  contentScriptMain: function (featureList) {
-    try {
-      // If the user has checked the Clickjacking protection feature on, then call the function
-      if (featureList.find(({ id }) => id == "clickProt").featureOn) {
-        contentScript.clickjackingMain();
-      }
-    } catch (e) {
-      console.error("contentScript: contentScriptMain failed \n", e)
-      return { redirectUrl: window.browser.extension.getURL("../html/resetConfig.html")};
-    }
-  },
-}
-
 /******** 1. Calls first function when a page has loaded **********/
 // Each time a page has loaded, the config is requested and the protection checker feature
 window.browser.runtime.sendMessage({ fn: "getFeatureListMsg" }, function (response) {
   try {
     //Calls the contentScriptMain function after config has been called
-    contentScript.contentScriptMain(response)
+    contentScript.clickjackingMain();
   } catch (e) {
     console.error("contentScript: Config Message failed")
     return { redirectUrl: window.browser.extension.getURL("../html/resetConfig.html")};

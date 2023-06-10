@@ -11,22 +11,6 @@ window.browser = (function () {
 })();
 
 var optionsPage = {
-  /******** 2. Updates Title **********/
-  updateTitle: function () {
-    try {
-      //Firstly set the Title to be Off 
-      document.getElementById("zunnaH1").style.color = "Red"
-      for (var feature of JSON.parse(localStorage.zunnaConfig).featureList) {
-        // If any of the features are on then show the extension is turned on
-        if (feature.featureOn) document.getElementById("zunnaH1").style.color = "ForestGreen"
-      }
-    } catch (e) {
-      console.error("Pop up: Title couldn't be updated \n", e)
-      return { redirectUrl: window.browser.extension.getURL("../html/resetConfig.html")};
-    }
-  },
-  /******** Updates Title End **********/
-
   /******** 3. Creates Description Elements **********/
   parseDescription: function () {
     try {
@@ -57,7 +41,6 @@ var optionsPage = {
   /******** 2. Loads optionsPage with Config contents **********/
   optionsPageMain: function () {
     // Call each function to display aspect of optionsPage
-    optionsPage.updateTitle()
     optionsPage.parseDescription()
   }
 }

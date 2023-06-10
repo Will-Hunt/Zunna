@@ -174,27 +174,24 @@ const background = {
       // new URL() gives an error if the URL is encoded
       currentURL = decodeURIComponent(initialURL) || initialURL;
       var currentURLHost = new URL(currentURL).host;
-      //If the feature is turned on, call the feature function 
-      if (config.featureList.find(({ id }) => id == "safeWebChec").featureOn && config.userBlockList.includes(currentURLHost)) {
+      //If user has blocked the website, prevent the website loading
+      if (config.userBlockList.includes(currentURLHost)) {
         return { cancel: true }
       };
-      if (config.featureList.find(({ id }) => id == "xXSProt").featureOn) {
-        currentURL = background.reflectiveXXS(currentURL);
-      };
-      if (config.featureList.find(({ id }) => id == "safeWebChec").featureOn) {
-        currentURL = background.redirectURLCheck(currentURL);
-        //If the URL protocol is http, call the feature function 
-        if (currentURL.includes("http:")) currentURL = background.httpSRedirect(currentURL);
-      };
-      if (config.featureList.find(({ id }) => id == "trackProt").featureOn) {
-        currentURL = background.trackingURLParameters(currentURL);
-      };
-      if (config.featureList.find(({ id }) => id == "cookieProt").featureOn) {
-        currentURL = background.cookieURLCheck(currentURL);
-        background.cookieCount();
-      };
+      //Check for Refective XXS
+      currentURL = background.reflectiveXXS(currentURL);
+      //Check if URL contains URL
+      currentURL = background.redirectURLCheck(currentURL);
+      //If the URL protocol is http 
+      if (currentURL.includes("http:")) currentURL = background.httpSRedirect(currentURL);
+      //Check for tracking elements
+      currentURL = background.trackingURLParameters(currentURL);
+      //Check for cookies element & report cookie count
+      currentURL = background.cookieURLCheck(currentURL);
+      background.cookieCount();
+      
       //Check if the URL isn't allowed by user, then check the URL for HTTPS Protocol, Redirect and Permission
-      if (config.featureList.find(({ id }) => id == "safeWebChec").featureOn && currentURL.includes("http:")) {
+      if (currentURL.includes("http:")) {
         currentURL = decodeURIComponent(response.url) || response.url;
         var currentURLHost = new URL(currentURL).host;
         if (!config.urlsToAllow.includes(currentURLHost)) background.httpAllowCheck(currentURL);
