@@ -47,7 +47,7 @@
 .zunnaP{
   font-family: Souvenir;
   font-size: 1.5em;
-  text-align: center;
+  text-align: left;
 }
 .zunnaButton{
   border: white 2px;
@@ -59,11 +59,20 @@
 .zunnaButton:hover {
   background-color: #DAAD86;
 }
+.zunnaul {
+  padding: 0 20;
+}
+.zunnaul li {
+  padding: 5px;
+  font-size: 1.5em;
+}
 .hidden {
   display: none;
 }
 
 /* Footer */
 .zunnaFooter {
-  padding: 10px;
+  width: 80%;
+  bottom: 0;
+  position: fixed;
 }

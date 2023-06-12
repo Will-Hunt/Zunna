@@ -18,18 +18,26 @@
 
 <body class="zunnaBody">
   <!-- Contains the Pop Ups Display Content -->
-  <div>
-    <h1 id="zunnaH1">Digitial Profile is Protected</h1>
-  </div>  
-  <div class="zunnaTab">
-    <button class="zunnaTabLinks" id="AboutButton">About Zunna</button>
-    <button class="zunnaTabLinks" id="SettingsButton">Settings</button>
-    <button class="zunnaTabLinks" id="ReportButton">Report an Issue</button>
-  </div>
+  <h1 id="zunnaH1">Digitial Profile is Protected</h1>
+  <button class="zunnaTabLinks" id="AboutButton">About Zunna</button>
+  <button class="zunnaTabLinks" id="SettingsButton">Settings</button>
+  <button class="zunnaTabLinks" id="ReportButton">Report an Issue</button>
+  
   
   <div id="About" class="zunnaTabcontent">
-    <h2 classs="zunnaH2" id="zunnaDescription"></h2>
-    <p class="zunnaP" id="zunnaFeatureList"></p>
+    <h3 class="zunnaH3">A cross-browser extension that encompasses the necessary features to best protect individuals against common cyber security risks whilst surfing the web.</h3>
+    <p class="zunnaP">The privacy and confidentiality of personal data are of utmost importance to organisations and individuals alike. However, some of this data is collected by web browsers without the knowledge of the users. These concerns are amplified by the proliferation of smart devices, capable of connecting to the internet. Web browsers are available across many devices and platforms. Ensuring the users’ security and privacy is a significant challenge. Zunna is designed to protect personal data.</p>
+    <br>
+    <h3 class="zunnaH3">The main features of Zunna are:</h3>
+    <ul class="zunnaul">
+      <li>Clickjacking Protection: The extension can detect and highlight hidden inline frame features in a URL and Web Page.</li>
+      <li>Cookie File Protection: The extension can manage and delete appropriate cookie files in a URL and Web Page.</li>
+      <li>Cross-Site Scripting Protection: The extension can recognize and remove Cross-Site Scripting tags in a URL and Web Page.</li>
+      <li>Password suggestions: Users receive a prompt for a more secure and memorable password when visiting sign up pages.</li>
+      <li>Safe Website Checking: The extension can recognize when a site is safe or not using the HTTP protocol and comparing URLs to datasets of websites known to be dangerous, cautioning the user appropriately.</li>
+      <li>Tracking Protection: The extension can recognize and remove tracking components in a URL and Web Page.</li>
+      <li>Advertisement Blocking: The extension can recognize and remove advertisement elements on a web page.</li>
+    </ul>
   </div>
   
   <div id="Settings" class="zunnaTabcontent" style="display:none">
@@ -52,13 +60,15 @@
   <div id="Report" class="zunnaTabcontent" style="display:none">
     <h3>WIP</h3>
     <p>Currently a work in progress feature.</p>
-  </div> 
-
-  
-  
-  <div class="footer">
-    <h2 classs="zunnaH2">Zunna - Protecting Personal Data</h2>
   </div>
+  
+  
+  
+  <div class="zunnaFooter">
+    <hr>
+    <h2 class="zunnaH2">Zunna - Protecting Personal Data</h2>
+  </div>
+  
   <script src="../js/options.js" defer></script>
 </body>
 
