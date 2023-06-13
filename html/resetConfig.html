@@ -1,11 +1,11 @@
 <!-- Zunna Browser Extension -->
-<!-- Reset Configuration File Page HTML Design -->
+<!-- Report an issue Page HTML Design -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <!-- Contains Pop Up MetaData -->
-  <title>ZunnaOptionsPage</title>
+  <title>Zunna Options</title>
 
   <meta charset="utf-8">
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -13,21 +13,55 @@
   <meta name="theme-color" content="#c6838f" />
 
   <link rel="stylesheet" type="text/css" href="../css/main.css">
+  <link rel="stylesheet" type="text/css" href="../css/warningPage.css">
 </head>
 
 <body class="zunnaBody">
   <!-- Contains the Pop Ups Display Content -->
-  <div>
-    <h1 id="zunnaH1">Oh No! Your config has crashed!</h1>
-  </div>
+  <h1 id="zunnaH1" style="color: red;">A fault has occured.</h1>
   <h2 class="zunnaH2">Please click the button below to fix this issue; Please note this will delete custom settings such as allowed URLS and passowrds</h2> 
+  <div class="container">
+    <form action="/action_page.php">
+      <div class="row">
+        <div class="col-25">
+          <h2 for="subject">Subject</h2>
+        </div>
+        <div class="col-75">
+          <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <h2 for="fname">Log Details</h2>
+        </div>
+        <div class="col-75">
+          <h3 id="logDetails">Content will come from TryCatch URK</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <h2 for="lname">Reporter</h2>
+        </div>
+        <div class="col-75">
+          <input type="text" id="lname" name="Optional.." placeholder="Your last name..">
+        </div>
+      </div>
+      <div class="row">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+  </div>
   <hr>
-  <button class="zunnaButton" id="resetConfig">Reset User Settings</button>
-  <hr>
-  <div class="footer">
+  <button class="zunnaTabLinks" id="returnPreviousPage">Return to Previous Page</button>
+  <button class="zunnaTabLinks" id="resetConfig">Reset User Settings</button>
+  <button class="zunnaTabLinks" id="attemptPage">Attempt Page Again</button>
+
+  <div class="zunnaFooter">
+    <hr>
     <h2 class="zunnaH2">Zunna - Protecting Personal Data</h2>
   </div>
-  <script src="../js/options.js" defer></script>
+    
+  <script src="../js/warningPage.js" defer></script>
 </body>
 
 </html>
