@@ -18,7 +18,10 @@ var popUp = {
       cookieCount = JSON.parse(localStorage.zunnaConfig).cookiesCount || 0;
       document.getElementById("cookiesCounter").innerHTML = cookieCount + trackerCount;
     } catch (e) {
-      console.error("Pop up:Tracker Number couldn't be updated \n", e)
+      issueLog = "popUp > Tracker Number couldn't be updated: " + e
+      return {redirectUrl: window.browser.extension.getURL(
+        "../html/resetConfig.html?issueURL=" + issue
+      )}
     }
   },
   /******** Gets Tracker Count End **********/
@@ -29,7 +32,10 @@ var popUp = {
       //Get the number of trackers detected and blocked 
       document.getElementById("advertsCounter").innerHTML = JSON.parse(localStorage.zunnaConfig).urlsBlocked;
     } catch (e) {
-      console.error("Pop up: Adverts Blocked Number couldn't be updated \n", e)
+      issueLog = "popUp > Adverts Blocked Number couldn't be updated: " + e
+      return {redirectUrl: window.browser.extension.getURL(
+        "../html/resetConfig.html?issueURL=" + issue
+      )}
     }
   },
   /******** Gets Tracker Count End **********/
@@ -59,7 +65,10 @@ function pwdSuggestion() {
     if (websiteName) return suggestedPassword + websiteName
     else return suggestedPassword
   } catch (e) {
-    console.error("contentScript: pwdSuggestion failed \n", e)
+    issueLog = "popUp > pwdSuggestion failed: " + e
+    return {redirectUrl: window.browser.extension.getURL(
+      "../html/resetConfig.html?issueURL=" + issue
+    )}
   }
 }
 zunnaShowPwdButton = document.getElementById('zunnaShowPwdButton')
@@ -84,7 +93,10 @@ if (zunnaCopyPwdButton) {
       //Copy the selcted text
       document.execCommand('copy');
     } catch (e) {
-      console.error("contentScript: pwdSuggestion failed to copyToClipboard \n", e)
+      issueLog = "popUp > pwdSuggestion failed to copyToClipboard: " + e
+      return {redirectUrl: window.browser.extension.getURL(
+        "../html/resetConfig.html?issueURL=" + issue
+      )}
     }
     textarea.remove()
   })

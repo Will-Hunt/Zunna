@@ -36,6 +36,10 @@ const background = {
       return { redirectUrl: warningPageLinkWithQuery };
     } catch (e) {
       console.error("background: httpSCheck failed \n", e)
+      issueLog = "background > httpSCheck failed: " + e
+      return {redirectUrl: window.browser.extension.getURL(
+        "../html/resetConfig.html?issueURL=" + issue
+      )}
     }
   },
   /******** Safe URL Check End **********/
@@ -69,7 +73,10 @@ const background = {
       };
       return currentURL;
     } catch (e) {
-      console.error("background: trackingURLParameters failed \n", e)
+      issueLog = "background > trackingURLParameters failed: " + e
+      return {redirectUrl: window.browser.extension.getURL(
+        "../html/resetConfig.html?issueURL=" + issue
+      )}
     }
   },
   /******** Tracking Protection End **********/
@@ -88,7 +95,10 @@ const background = {
         return newRedirectURL = encodeURI(newURL) || newURL;
       } else return currentURL;
     } catch (e) {
-      console.error("background: reflectiveXXSMain failed \n", e)
+      issueLog = "background > reflectiveXXSMainParameters failed: " + e
+      return {redirectUrl: window.browser.extension.getURL(
+        "../html/resetConfig.html?issueURL=" + issue
+      )}
     }
     //Note: Only Reflactive XXS is a client-side issue, 
     // Persistent & DOM is Server-side 
@@ -126,7 +136,10 @@ const background = {
       };
       return currentURL;
     } catch (e) {
-      console.error("background: cookieURLCheck failed \n", e)
+      issueLog = "background > cookieURLCheck failed: " + e
+      return {redirectUrl: window.browser.extension.getURL(
+        "../html/resetConfig.html?issueURL=" + issue
+      )}
     }
   },
   cookieCount: function () {
@@ -143,7 +156,10 @@ const background = {
           // For each cookie remove where name and url match
           window.browser.cookies.remove(cookie.name, cookie.domain)
         } catch (e) {
-          console.log("background: deleting cookies failed \n", e)
+          issueLog = "background > deletingAllCookies failed: " + e
+          return {redirectUrl: window.browser.extension.getURL(
+            "../html/resetConfig.html?issueURL=" + issue
+          )}
         }
       }
     });
@@ -157,7 +173,10 @@ const background = {
             // For each cookie remove where name and url match
             window.browser.cookies.remove(cookie.name, cookie.domain)
           } catch (e) {
-            console.log("background: deleting cookies failed \n", e)
+            issueLog = "background > deletingSiteCookies failed: " + e
+            return {redirectUrl: window.browser.extension.getURL(
+              "../html/resetConfig.html?issueURL=" + issue
+            )}
           }
         }
       }
@@ -199,8 +218,10 @@ const background = {
 
       return { redirectUrl: encodeURI(currentURL) };
     } catch (e) {
-      console.error("background: checkURL failed \n", e)
-      return { redirectUrl: window.browser.extension.getURL("../html/resetConfig.html") };
+      issueLog = "background > checkURL failed: " + e
+      return {redirectUrl: window.browser.extension.getURL(
+        "../html/resetConfig.html?issueURL=" + issue
+      )}
     }
     //Issue to Overcome: The order and changes made by functions, caused reprecutions
     //Such as one test link included a http redirct but had no search parameter close

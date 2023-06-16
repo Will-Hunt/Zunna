@@ -18,8 +18,10 @@ var optionsPage = {
       divElem.innerHTML = JSON.parse(localStorage.zunnaConfig).extensionDescription;
       document.getElementById('zunnaDescription').appendChild(divElem)
     } catch (e) {
-      console.error("Options Page: Description couldn't be parsed \n", e)
-      return { redirectUrl: window.browser.extension.getURL("../html/resetConfig.html")};
+      issueLog = "options > Description couldn't be parsed: " + e
+      return {redirectUrl: window.browser.extension.getURL(
+        "../html/resetConfig.html?issueURL=" + issue
+      )}
     }
   },
   /******** Creates Description Elements End **********/
@@ -44,14 +46,16 @@ var optionsPage = {
       
         divElem.innerHTML = JSON.parse(localStorage.zunnaConfig).featureList;
 
-
-
-
         document.getElementById('zunnaFeatureList').appendChild(divElem)
       }
     } catch (e) {
-      console.error("Options Page: FeatureList couldn't be parsed \n", e)
+      issueLog = "optionsPage > FeatureList couldn't be parsed: " + e
+      return {redirectUrl: window.browser.extension.getURL(
+        "../html/resetConfig.html?issueURL=" + issue
+      )}
+      console.error(":  \n", e)
       return { redirectUrl: window.browser.extension.getURL("../html/resetConfig.html")};
+
     }
   },
   /******** Creates Description Elements End **********/
@@ -64,8 +68,10 @@ var optionsPage = {
       chr = JSON.stringify(document.getElementById("meaningfulSpecialChr").value);
       JSON.parse(localStorage.zunnaConfig).userDetailsArray = [phrase, number, chr]
     } catch (e) {
-      console.error("Pop up: User Settings couldn't be updated \n", e)
-      return { redirectUrl: window.browser.extension.getURL("../html/resetConfig.html")};
+      issueLog = "popUp > User Settings couldn't be updated: " + e
+      return {redirectUrl: window.browser.extension.getURL(
+        "../html/resetConfig.html?issueURL=" + issue
+      )}
     }
   },
   /******** Updates User Settings Toggles End **********/

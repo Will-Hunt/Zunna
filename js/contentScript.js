@@ -27,7 +27,10 @@ var contentScript = {
     } catch (e) {
       //Method 3: Showing frames
       contentScript.highlightFrames()
-      console.error("contentScript: clickjackingMain Method 2 failed \n", e)
+      issueLog = "contentScript > clickjackingMain Method 2 failed: " + e
+      return {redirectUrl: window.browser.extension.getURL(
+        "../html/resetConfig.html?issueURL=" + issue
+      )}
     }
   },
   sameSiteIFrame: function () {
@@ -49,6 +52,7 @@ var contentScript = {
     }
   },
   /******** Clickjacking Protection End **********/
+}
 
 /******** 1. Calls first function when a page has loaded **********/
 // Each time a page has loaded, the config is requested and the protection checker feature
@@ -57,7 +61,9 @@ window.browser.runtime.sendMessage({ fn: "getFeatureListMsg" }, function (respon
     //Calls the contentScriptMain function after config has been called
     contentScript.clickjackingMain();
   } catch (e) {
-    console.error("contentScript: Config Message failed")
-    return { redirectUrl: window.browser.extension.getURL("../html/resetConfig.html")};
+    issueLog = "contentScript > Config Message failed: " + e
+    return {redirectUrl: window.browser.extension.getURL(
+      "../html/resetConfig.html?issueURL=" + issue
+    )}
   }
 })
